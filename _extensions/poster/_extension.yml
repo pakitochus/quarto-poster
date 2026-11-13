@@ -1,0 +1,15 @@
+title: Poster
+author: Francisco J. Martínez
+version: 0.1.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    html:
+      theme: none
+      css: poster.css
+      toc: false
+      page-layout: full
+      embed-resources: true
+      html-math-method: mathml
+      template-partials:
+        - title-block.html

@@ -1,0 +1,167 @@
+---
+title: "A Descriptive Poster Title That Can Span Two Lines Comfortably"
+authors:
+  - name: "A. Author*"
+    affiliation:
+      - ref: inst-a
+      - ref: inst-b
+  - name: "B. Author"
+    affiliation:
+      - ref: inst-a
+  - name: "C. Author"
+    affiliation:
+      - ref: inst-b
+  - name: "D. Author"
+    affiliation:
+      - ref: inst-c
+  - name: "E. Author"
+    affiliation:
+      - ref: inst-a
+      - ref: inst-c
+affiliations:
+  - id: inst-a
+    name: University Name
+    department: Department of Something
+    city: City
+    country: Country
+  - id: inst-b
+    name: Research Institute Name
+    city: City
+    country: Country
+  - id: inst-c
+    name: Another Institution
+    department: Laboratory of Something Else
+    city: City
+    country: Country
+poster-logos:
+  - path: "images/logo-a.svg"
+    panel-class: "bg-black"
+  - path: "images/logo-b.svg"
+    panel-class: "bg-red"
+format: poster-html
+---
+
+::: {.poster}
+
+::: {.sec-band}
+## 1. Introduction
+
+::: {.grid}
+
+::: {.g-col-6}
+- **Highlighted band:** This section uses the `.sec-band` class, a full-width coloured band ideal for the opening and closing sections of the poster.
+
+- **Two-column layout:** Inside the band, a `.grid` with two `.g-col-6` children splits the content into equal halves. Any combination adding up to 12 columns works.
+:::
+
+::: {.g-col-6}
+- **Placeholder content:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus, posuere velit aliquet.
+
+- **Objective:** Replace this text with the motivation and goals of your work. Keep bullets short: posters are read from a distance of one or two metres.
+:::
+
+:::
+:::
+
+::: {.grid}
+::: {.g-col-7}
+::: {.sec-line}
+## 2. Methods
+:::
+
+Headings with the `.sec-line` class get a coloured rule above them, a lighter alternative to the full band. This column spans **7 of 12** grid columns. Inline math is supported out of the box: $y = f(\mathbf{x}) + \varepsilon$, with $\varepsilon \sim \mathcal{N}(0, \sigma^2)$.
+
+### 2.2 Subsection title {.sub}
+
+Level-3 headings with the `.sub` class are rendered as uppercase subsection titles. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Display equations work as well:
+
+$$
+\hat{\theta} = \arg\min_{\theta} \; \frac{1}{N}\sum_{i=1}^{N} \mathcal{L}\left(y_i, f_\theta(\mathbf{x}_i)\right) + \lambda \|\theta\|_2^2
+$$
+
+:::
+
+::: {.g-col-5}
+
+::: {.box-dark}
+### 2.1 Dark box {.text-white}
+
+The `.box-dark` class creates a dark panel that makes a block stand out, e.g. a dataset summary. Tables inside it switch automatically to a light-on-dark style:
+
+| Group | $N$ | Value (mean±SD) | Ratio |
+|:---|:---:|:---:|:---:|
+| **Group A** | 40 | $61.2 \pm 8.4$ | 20 / 20 |
+| **Group B** | 35 | $58.7 \pm 10.1$ | 18 / 17 |
+| **Group C** | 30 | $66.0 \pm 7.3$ | 14 / 16 |
+| **Group D** | 25 | $59.9 \pm 9.0$ | 12 / 13 |
+
+<p class="mt-4 mb-0" style="font-size: 21pt; color: #D1D5DB;">Smaller footnote-style text can be added with plain HTML when finer control over size or colour is needed.</p>
+
+:::
+
+:::
+
+::: {.g-col-12}
+
+![(A) A full-width figure spanning all 12 grid columns, with a cross-referenceable label. (B) Captions are rendered in italics below the image. (C) SVG figures stay sharp at any print size. (D) Replace `images/figure-wide.svg` with your own multi-panel figure.](images/figure-wide.svg){#fig-wide width="100%"}
+
+:::
+
+:::
+
+::: {.sec-line}
+## 3. Results
+:::
+
+::: {.grid}
+
+::: {.g-col-5}
+
+| CONDITION | SETTING | METRIC 1 | METRIC 2 | METRIC 3 |
+|:---|:---:|:---:|:---:|:---:|
+| **Condition A** | $\alpha$ | **$0.812 \pm 0.041$** | $0.790 \pm 0.052$ | $0.801 \pm 0.047$ |
+| **Condition B** | $\beta$ | **$0.765 \pm 0.058$** | $0.731 \pm 0.063$ | $0.744 \pm 0.060$ |
+| **Condition C** | $\alpha$ | **$0.642 \pm 0.090$** | $0.610 \pm 0.095$ | $0.598 \pm 0.101$ |
+| **Condition D** | $\beta$ | **$0.511 \pm 0.112$** | $0.487 \pm 0.108$ | $0.470 \pm 0.115$ |
+
+: Tables on a white background get a coloured header row, subtle zebra striping and a closing coloured rule. Captions go below, introduced by a colon line, and can be cross-referenced with a `#tbl-` label. Lorem ipsum dolor sit amet, consectetur adipiscing elit; values shown are placeholders. {#tbl-results}
+
+:::
+
+::: {.g-col-4}
+
+![A figure in a 4-column cell. Images scale to the width of their grid column, so the same file can be reused at different sizes. Replace `images/figure-bars.svg` with your own chart.](images/figure-bars.svg){#fig-bars width="100%"}
+
+:::
+
+::: {.g-col-3}
+
+![A figure in a 3-column cell. Narrow columns suit compact visualisations such as matrices or small multiples. Replace `images/figure-matrix.svg`.](images/figure-matrix.svg){#fig-matrix width="100%"}
+
+:::
+
+:::
+
+::: {.sec-band}
+## 4. Key findings
+
+::: {.grid .findings}
+::: {.g-col-6}
+* **First takeaway:** Lead with the single most important result, ideally with a number the reader can remember ($\approx 80\%$).
+* **Second takeaway:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.
+:::
+::: {.g-col-6}
+* **Third takeaway:** The `.findings` class styles bullet lists for coloured backgrounds, with extra spacing between items.
+* **Outlook:** Close with implications or future work. Donec id elit non mi porta gravida at eget metus.
+:::
+:::
+:::
+
+::: {.poster-footer}
+<span>\*corresponding.author@example.org · Research Group Name</span>
+<span>Presented at Conference Name 20XX (City, Country)</span>
+
+**Funding:** Acknowledge grants and funding agencies here (Grant ID-0000-0000, Agency Name).
+:::
+
+:::

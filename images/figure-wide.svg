@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 820" width="2400" height="820">
+  <rect width="2400" height="820" fill="#fff"/>
+  <text x="1200.0" y="75" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="52" font-weight="600" fill="#231f20">Wide figure placeholder · 2400 × 820</text>
+  
+  <g>
+    <rect x="50" y="120" width="500" height="560" rx="24" fill="#f5f5f5" stroke="#d62934" stroke-width="6"/>
+    <circle cx="100" cy="170" r="34" fill="#d62934"/>
+    <text x="100" y="184" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#fff">A</text>
+    <rect x="110" y="250" width="380" height="250" rx="12" fill="none" stroke="#9ca3af" stroke-width="4" stroke-dasharray="18 12"/>
+    <line x1="110" y1="250" x2="490" y2="500" stroke="#9ca3af" stroke-width="3"/>
+    <line x1="490" y1="250" x2="110" y2="500" stroke="#9ca3af" stroke-width="3"/>
+    <text x="300.0" y="590" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="48" font-weight="600" fill="#231f20">Data</text>
+    <text x="300.0" y="640" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="30" fill="#6b7280">placeholder panel</text>
+  </g><path d="M565 400 h55 m-22 -22 l22 22 l-22 22" fill="none" stroke="#231f20" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g>
+    <rect x="650" y="120" width="500" height="560" rx="24" fill="#f5f5f5" stroke="#2d2d2d" stroke-width="6"/>
+    <circle cx="700" cy="170" r="34" fill="#2d2d2d"/>
+    <text x="700" y="184" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#fff">B</text>
+    <rect x="710" y="250" width="380" height="250" rx="12" fill="none" stroke="#9ca3af" stroke-width="4" stroke-dasharray="18 12"/>
+    <line x1="710" y1="250" x2="1090" y2="500" stroke="#9ca3af" stroke-width="3"/>
+    <line x1="1090" y1="250" x2="710" y2="500" stroke="#9ca3af" stroke-width="3"/>
+    <text x="900.0" y="590" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="48" font-weight="600" fill="#231f20">Processing</text>
+    <text x="900.0" y="640" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="30" fill="#6b7280">placeholder panel</text>
+  </g><path d="M1165 400 h55 m-22 -22 l22 22 l-22 22" fill="none" stroke="#231f20" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g>
+    <rect x="1250" y="120" width="500" height="560" rx="24" fill="#f5f5f5" stroke="#d62934" stroke-width="6"/>
+    <circle cx="1300" cy="170" r="34" fill="#d62934"/>
+    <text x="1300" y="184" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#fff">C</text>
+    <rect x="1310" y="250" width="380" height="250" rx="12" fill="none" stroke="#9ca3af" stroke-width="4" stroke-dasharray="18 12"/>
+    <line x1="1310" y1="250" x2="1690" y2="500" stroke="#9ca3af" stroke-width="3"/>
+    <line x1="1690" y1="250" x2="1310" y2="500" stroke="#9ca3af" stroke-width="3"/>
+    <text x="1500.0" y="590" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="48" font-weight="600" fill="#231f20">Model</text>
+    <text x="1500.0" y="640" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="30" fill="#6b7280">placeholder panel</text>
+  </g><path d="M1765 400 h55 m-22 -22 l22 22 l-22 22" fill="none" stroke="#231f20" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g>
+    <rect x="1850" y="120" width="500" height="560" rx="24" fill="#f5f5f5" stroke="#2d2d2d" stroke-width="6"/>
+    <circle cx="1900" cy="170" r="34" fill="#2d2d2d"/>
+    <text x="1900" y="184" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#fff">D</text>
+    <rect x="1910" y="250" width="380" height="250" rx="12" fill="none" stroke="#9ca3af" stroke-width="4" stroke-dasharray="18 12"/>
+    <line x1="1910" y1="250" x2="2290" y2="500" stroke="#9ca3af" stroke-width="3"/>
+    <line x1="2290" y1="250" x2="1910" y2="500" stroke="#9ca3af" stroke-width="3"/>
+    <text x="2100.0" y="590" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="48" font-weight="600" fill="#231f20">Output</text>
+    <text x="2100.0" y="640" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="30" fill="#6b7280">placeholder panel</text>
+  </g>
+  <text x="1200.0" y="770" text-anchor="middle" font-family="Fira Sans, Helvetica, Arial, sans-serif" font-size="30" fill="#6b7280">Replace images/figure-wide.svg with your own multi-panel figure</text>
+</svg>
