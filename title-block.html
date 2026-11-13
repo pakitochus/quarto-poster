@@ -1,0 +1,29 @@
+<header id="title-block-header" class="poster-header">
+$if(poster-logos)$
+<div class="poster-logos">
+$for(poster-logos)$
+<div class="logo-panel $it.panel-class$"><img src="$it.path$" alt="logo"></div>
+$endfor$
+</div>
+$endif$
+<div class="title-block">
+$if(title)$<h1 class="title">$title$</h1>$endif$
+
+$if(by-author)$
+<p class="authors">$for(by-author)$$if(by-author.name.literal)$$by-author.name.literal$$endif$$if(it.affiliations)$<sup>$for(it.affiliations)$$it.number$$sep$,$endfor$</sup>$endif$$sep$, $endfor$</p>
+
+<p class="dept">
+$for(affiliations)$
+<sup>$it.number$</sup>$if(it.department)$$it.department$,$ endif$$it.name$, $it.city$ ($it.country$)$sep$; $endfor$
+</p>
+$else$
+$if(author)$
+<p class="authors">$for(author)$$author$$sep$, $endfor$</p>
+$endif$
+$if(affiliations)$
+<p class="dept">$for(affiliations)$$it.name$$sep$<br>$endfor$</p>
+$endif$
+$endif$
+
+</div>
+</header>

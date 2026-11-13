@@ -1,0 +1,131 @@
+/*-- scss:defaults --*/
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
+
+// 1. Activar CSS Grid nativo de Bootstrap 5.1 (.grid y .g-col-*)
+$enable-cssgrid: true;
+
+// 2. Paleta corporativa UGR / SiPBA mapeada a colores semánticos de Bootstrap
+$primary:   #B5222C; // -> .bg-primary, .text-primary, .border-primary
+$dark:      #232323; // -> .bg-dark, .text-dark, .border-dark
+$secondary: #3A3A3A; // -> .text-secondary, .bg-secondary
+$light:     #F8F9FA; // -> .bg-light
+
+// 3. Tipografía global de Bootstrap (EB Garamond en todos los encabezados y título)
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$headings-font-family:   'EB Garamond', Georgia, serif;
+$headings-font-weight:   700;
+$body-color:             $dark;
+$body-bg:                #ffffff;
+
+/*-- scss:rules --*/
+
+// Configuración de página A0 para exportación limpia a PDF
+@page {
+  size: 841mm 1189mm;
+  margin: 0mm;
+}
+
+html, body {
+  width: 841mm;
+  height: 1189mm;
+  margin: 0;
+  padding: 0;
+  font-size: 26pt;
+  line-height: 1.36;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+p {
+  text-align: justify;
+}
+
+// Lienzo A0 controlado por utilidades flex de Bootstrap
+.poster-canvas {
+  width: 841mm;
+  height: 1189mm;
+  padding: 0 35mm 20mm 35mm;
+  overflow: hidden;
+}
+
+// Sangrado al borde superior e izquierdo solo para la caja de logos
+.bleed-top-left {
+  margin-left: -35mm;
+  height: 135mm;
+  img {
+    width: 92%;
+    max-height: 108mm;
+    object-fit: contain;
+  }
+}
+
+// Título principal en EB Garamond
+.banner-titles {
+  h1 {
+    font-family: $headings-font-family;
+    font-size: 56pt;
+    font-weight: 700;
+    line-height: 1.1;
+    border: none;
+  }
+}
+
+// Números antiguos (oldstyle-nums) y filete superior estilo póster UGR
+.ugr-title, .ugr-subtitle, .ugr-banner-title {
+  font-family: $headings-font-family;
+  text-transform: uppercase;
+  font-variant-numeric: oldstyle-nums;
+  font-feature-settings: "onum" 1;
+  border: none;
+  
+  &::before {
+    content: "";
+    display: block;
+    height: 4.5pt;
+    margin-bottom: 2mm;
+  }
+}
+
+.ugr-title {
+  font-size: 45pt;
+  &::before { width: 45%; background-color: $primary; }
+}
+
+.ugr-subtitle {
+  font-size: 34pt;
+  &::before { width: 65%; background-color: $primary; }
+}
+
+.ugr-banner-title {
+  font-size: 44pt;
+  &::before { width: 32%; background-color: rgba(255, 255, 255, 0.7); }
+}
+
+// Ajuste de barras de progreso de Bootstrap para gráficas del póster
+.progress {
+  height: 16mm;
+  background-color: $light;
+  border: 1pt solid #9CA3AF;
+  border-radius: 0;
+}
+
+// Ajuste limpio para las tablas nativas de Markdown
+table {
+  width: 100%;
+  font-size: 23pt;
+  border-collapse: collapse;
+  th, td {
+    padding: 4.2mm 4.8mm;
+    border: 1pt solid #D1D5DB;
+  }
+}
+
+.bg-dark table {
+  th { background-color: $primary; color: white; border-color: #4B5563; }
+  td { background-color: #2E2E2E; color: white; border-color: #4B5563; }
+}
+
+.table-results {
+  th { background-color: $dark; color: white; }
+  tr:nth-child(even) td { background-color: $light; }
+}

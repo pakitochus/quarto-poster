@@ -1,0 +1,298 @@
+/* Póster A0 vertical: 841 x 1189 mm, rejilla Bootstrap de Quarto */
+
+/* Fuentes autoalojadas (variable fonts), para no depender de red al renderizar */
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('fonts/FiraSans-Light.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('fonts/FiraSans-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('fonts/FiraSans-Medium.woff2') format('woff2');
+  font-weight: 500 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('fonts/FiraSans-Italic.woff2') format('woff2');
+  font-weight: 300 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('fonts/EBGaramond.woff2') format('woff2');
+  font-weight: 400 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('fonts/EBGaramond-Italic.woff2') format('woff2');
+  font-weight: 400 800; font-style: italic; font-display: swap;
+}
+
+:root {
+  --red: #d62934;      /* rojo del original */
+  --dark: #2d2d2d;     /* caja de datos */
+  --ink: #231f20;      /* texto */
+  --font-body: 'Fira Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-head: 'EB Garamond', Georgia, serif;
+}
+
+@page { size: 841mm 1189mm; margin: 0; }
+
+/* --------------------------------------------------------------------
+   Rejilla CSS Grid al estilo Bootstrap 5.1 (getbootstrap.com/docs/5.1/layout/css-grid/).
+   Quarto NO empaqueta el Bootstrap completo en sus documentos HTML (su CSS
+   viene recortado y no incluye .row/.col-md-* ni el grid experimental de
+   Bootstrap), así que replicamos aquí el mismo patrón de clases con CSS
+   Grid nativo, para no depender de lo que Quarto decida incluir.
+   Uso: ::: {.grid}  ::: {.g-col-6} ... :::  ::: {.g-col-6} ... ::: :::
+   -------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  margin: 0 0 12px;
+}
+.g-col-1  { grid-column: span 1; }
+.g-col-2  { grid-column: span 2; }
+.g-col-3  { grid-column: span 3; }
+.g-col-4  { grid-column: span 4; }
+.g-col-5  { grid-column: span 5; }
+.g-col-6  { grid-column: span 6; }
+.g-col-7  { grid-column: span 7; }
+.g-col-8  { grid-column: span 8; }
+.g-col-9  { grid-column: span 9; }
+.g-col-10 { grid-column: span 10; }
+.g-col-11 { grid-column: span 11; }
+.g-col-12 { grid-column: span 12; }
+.align-items-center { align-items: center; }
+
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: var(--font-body); color: var(--ink); font-size: 30px; line-height: 1.38; }
+
+/* Contenedor del póster: ancho A0 */
+.poster {
+  width: 841mm; min-height: 1189mm; margin: 0 auto;
+  padding: 10mm 20mm; box-sizing: border-box; overflow: hidden;
+}
+/* Quarto aplica márgenes y navegación propios: los quitamos */
+#quarto-header, #quarto-sidebar, #quarto-margin-sidebar,
+footer { display: none !important; }
+#quarto-content, main.content {
+  max-width: none !important; margin: 0 !important; padding: 0 !important;
+  display: block !important;
+}
+
+/* Cabecera: la genera el partial title-block.html a partir del YAML
+   (title, author, poster-affiliations, poster-logos). Pandoc la inserta
+   como <header class="poster-header"> ANTES de nuestro div .poster, así
+   que replicamos aquí el mismo ancho/márgenes del póster. */
+header.poster-header {
+  display: grid;
+  /* Los dos logos ocupan juntos el 25% del ancho de la cabecera, en la misma
+     proporción 3:2 que el negro/rojo originales (15% + 10%); el resto es
+     para el bloque de título. "align-items: stretch" (valor por defecto)
+     hace que los tres hijos midan lo mismo de alto: la altura natural del
+     bloque de título (título + autores + afiliaciones). */
+  grid-template-columns: 15% 10% 1fr;
+  width: 841mm; max-width: 841mm; margin: 0 auto; box-sizing: border-box;
+  /* A diferencia del resto del póster (que sí tiene padding uniforme),
+     en el original los recuadros negro/rojo llegan hasta el borde real de
+     la página: sin margen arriba ni a la izquierda. Solo se deja un
+     padding a la derecha para que el texto del título no toque el borde. */
+  padding: 0 14mm 0 0;
+}
+.poster-logos { display: contents; }   /* los logos pasan a ser hijos directos del grid */
+.logo-panel {
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; box-sizing: border-box;
+}
+.logo-panel.bg-black { background: #000; }
+.logo-panel.bg-red   { background: var(--red); }
+.logo-panel img { max-height: 90%; max-width: 100%; object-fit: contain; }
+.title-block { display: flex; flex-direction: column; justify-content: center; margin-left: 20px; padding-left: 10px; padding-top: 2em;}
+.title-block h1.title { font-family: var(--font-head); font-size: 92px; font-weight: 500; margin: 0 0 18px; line-height: 1.1; }
+.title-block p.authors { font-size: 36px; font-style: italic; margin: 0; }
+.title-block p.dept { font-size: 30px; margin: 8px 0 0; }
+
+/* Secciones */
+.sec-band {               /* secciones 1 y 4: banda roja, título + contenido */
+  background: var(--red); color: #fff; padding: 1em 1.5em 1em; margin: 16px 0 12px;
+}
+.sec-band p { font-size: 29px; line-height: 1.42; margin: 10px 0 0; }
+.sec-band .grid { margin-top: 10px; }
+.sec-line {               /* secciones 2 y 3: título con línea roja */
+  border-top: 6px solid var(--red); padding-top: 10px; margin: 24px 0 12px;
+}
+.sec-band h2, .sec-line h2 {
+  font-family: var(--font-head); font-size: 72px; font-weight: 500;
+  text-transform: uppercase; margin: 0; line-height: 1.1;
+}
+
+.sec-band div, .box-dark div {
+  padding: 0 0.5em;
+}
+
+/* La franja de hallazgos (sec. 4) lleva el texto también sobre fondo rojo */
+.findings-band .grid { margin-top: 14px; }
+.findings-band p, .findings-band li { color: #fff; }
+h3.sub { font-family: var(--font-head); font-size: 50px; font-weight: 500; text-transform: uppercase; margin: 14px 0 10px; }
+
+/* Caja oscura (2.1 Dataset) */
+.box-dark { background: var(--dark); color: #fff; padding: 1em 2em 1em; margin-top: 18px; }
+.box-dark h3 { font-family: var(--font-head); font-size: 50px; font-weight: 500; margin: 0 0 12px; }
+
+/* Figuras y pies */
+figure { margin: 12px 0; }
+figure img { width: 100%; height: auto; display: block; }
+figcaption, .caption { font-size: 26px; font-style: italic; margin-top: 8px; }
+
+/* Listas de conclusiones */
+.findings ul { padding-left: 1.2em; margin: 0; color: #fff; }
+.findings li { margin-bottom: 14px; font-size: 29px; }
+
+/* Pie */
+.poster-footer { display: flex; justify-content: space-between; font-style: italic; font-size: 26px; margin-top: 18px; }
+
+
+/* ============================================================
+   Tablas: estilos coherentes para fondos oscuros y claros
+   ============================================================
+   Nota de especificidad: las reglas "oscuras" usan el selector
+   .poster .box-dark table / .poster .sec-band table (3 clases)
+   en vez de .box-dark table (2 clases) para que SIEMPRE ganen
+   sobre las reglas de ".poster table" (fondo claro), sin
+   depender del orden en que aparezcan en el archivo.
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 24px;
+  margin: 14px 0;
+}
+ 
+/* Alineación de números (común a ambos estilos) */
+table td:last-child,
+table th:last-child {
+  text-align: right;
+}
+ 
+table strong { font-weight: 600; }
+ 
+/* ────────────────────────────────────────────────────────
+   TABLAS EN FONDO CLARO (#fff): texto negro, cabecera en rojo
+   institucional, líneas horizontales suaves.
+   ──────────────────────────────────────────────────────── */
+.poster table {
+  color: var(--ink);
+}
+ 
+.poster table thead {
+  background: var(--red);
+}
+ 
+.poster table thead th {
+  padding: 14px 16px;
+  text-align: left;
+  font-family: var(--font-head);
+  font-size: 26px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+}
+ 
+.poster table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ececec;   /* línea suave, casi invisible */
+  vertical-align: middle;
+}
+ 
+.poster table tbody tr:last-child td {
+  border-bottom: 2px solid var(--red);  /* cierre con el rojo institucional */
+}
+ 
+.poster table tbody tr:nth-child(even) {
+  background: #faf5f5;   /* tinte rojizo muy sutil, en vez de gris neutro */
+}
+ 
+.poster table tbody tr:hover {
+  background: rgba(214, 41, 52, 0.08);  /* --red al 8% */
+}
+ 
+.poster table strong { color: var(--ink); }
+.poster table em { color: #666; font-style: italic; }
+ 
+/* ────────────────────────────────────────────────────────
+   TABLAS EN FONDO OSCURO (#2d2d2d / bandas rojas): texto blanco
+   ──────────────────────────────────────────────────────── */
+.poster .box-dark table,
+.poster .sec-band table {
+  background: transparent;
+  color: #fff;
+}
+ 
+.poster .box-dark table thead,
+.poster .sec-band table thead {
+  background: rgba(255, 255, 255, 0.12);
+}
+ 
+.poster .box-dark table thead th,
+.poster .sec-band table thead th {
+  color: #fff;
+}
+ 
+.poster .box-dark table tbody td,
+.poster .sec-band table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);  /* línea suave */
+  vertical-align: middle;
+  color: #fff;
+}
+ 
+.poster .box-dark table tbody tr:last-child td,
+.poster .sec-band table tbody tr:last-child td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+ 
+.poster .box-dark table tbody tr:nth-child(even),
+.poster .sec-band table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.06);
+}
+ 
+.poster .box-dark table tbody tr:hover,
+.poster .sec-band table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+ 
+.poster .box-dark table strong,
+.poster .sec-band table strong {
+  color: #fff;
+}
+ 
+.poster .box-dark table em,
+.poster .sec-band table em {
+  color: #e0e0e0;
+  font-style: italic;
+}
+ 
+
+/* ============================================================
+   Estilos específicos para impresión (modo PDF)
+   ============================================================ */
+@media print {
+  /* Asegura que los colores de fondo se impriman */
+  .sec-band { background-color: var(--red) !important; color: #fff !important; }
+  .logo-panel.bg-black { background-color: #000 !important; }
+  .logo-panel.bg-red { background-color: var(--red) !important; }
+  .box-dark { background-color: var(--dark) !important; color: #fff !important; }
+  
+  /* El bloque de título también debe llevarse bien en impresión */
+  header.poster-header { page-break-after: avoid; }
+  
+  /* Evita partir figuras entre páginas */
+  figure { page-break-inside: avoid; }
+  .box-dark { page-break-inside: avoid; }
+}

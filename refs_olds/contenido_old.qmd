@@ -1,0 +1,159 @@
+---
+format:
+  typst:
+    papersize: a0
+    margin:
+      top: 0cm
+      bottom: 2.5cm
+      left: 3.5cm
+      right: 3.5cm
+    title-block-style: none
+    include-in-header: poster_style.typ
+---
+
+```{=typst}
+// 0. GENERAR LA CABECERA
+#banner-header(
+  "Diagnóstico Diferencial de EP, PSP y AMS: Un Enfoque Basado en XGBoost para el Análisis de Capas Retinianas",
+  "Differential Diagnosis of PD, PSP, and MSA: An XGBoost Approach to Retinal Layer Analysis",
+  "M. Rodriguez-Rubio¹, F.J. Martinez-Murcia¹, J. E. Arco², I. A. Illán¹, F. Segovia¹, C. Jimenez-Mesa¹, C. Vazquez-Garcia¹, J.M. Gorriz¹, J. Ramirez¹, S. Schönecker³, S. Kamp³, L. Klatte³, S. Katzdobler³, L. Marth³, O. Wagemann³, C. Palleis³, U. Fietzek³, E. Weidinger³, A. Danek³, G. Hölinger³, J. Havla³, A. Bernhardt³, A. Jäck³, J. Levin³",
+  "¹DaSCI, Universidad de Granada, España | ²CIMCYC, Granada, España | ³LMU University Hospital, Múnich, Alemania"
+)
+
+#v(1.2cm)
+
+// 1. INTRODUCCIÓN Y MOTIVACIÓN (Caja Roja)
+#red-banner-box(
+  "1", "Introducción y Motivación",
+  [
+    *El reto clínico:* La enfermedad de Parkinson (EP), la parálisis supranuclear progresiva (PSP) y la atrofia multisistémica (AMS) presentan síntomas clínicos solapados en etapas tempranas, dificultando su diagnóstico diferencial.
+
+    *Bases biológicas:* La EP y la AMS son *sinucleinopatías* caracterizadas por la agregación de alfa-sinucleína, mientras que la PSP es una *tauopatía* definida por el depósito patológico de proteína tau.
+  ],
+  [
+    *La retina como ventana al SNC:* La Tomografía de Coherencia Óptica (OCT) permite cuantificar capas retinianas de forma no invasiva para detectar patrones de adelgazamiento específicos de cada patología.
+
+    *Objetivo:* Evaluar sistemáticamente un modelo de _Machine Learning_ basado en *XGBoost* para automatizar la estratificación biológica y clínica mediante biomarcadores morfométricos de la retina.
+  ]
+)
+
+#v(0.6cm)
+
+// 2. METODOLOGÍA Y DATOS (Columnas asimétricas)
+#section-heading("2", "Metodología y Datos")
+
+#grid(
+  columns: (1.55fr, 1fr),
+  gutter: 2.2cm,
+  [ // Columna Izquierda: Esquema
+    Se adquirieron y segmentaron imágenes maculares con el dispositivo *Heidelberg Spectralis OCT*, seleccionando únicamente la visita basal de alta calidad por paciente y promediando ambos ojos. Se extrajeron *29 características* morfométricas normalizadas por volumen macular total ($"TMV" + Z$) y estandarizadas ($Z"-score"$).
+
+    #subsection-heading("2.2", "Esquema de Clasificación (XGBoost)")
+
+    #grid(
+      columns: (1.25fr, 1fr),
+      gutter: 1.5cm,
+      align(horizon)[
+        #block(width: 100%, stroke: 2pt + ugr-dark, inset: 1cm, fill: light-bg)[
+          #set text(size: 22pt, weight: "bold")
+          #align(center)[
+            #grid(
+              columns: (1fr, auto, 1fr, auto, 1fr), gutter: 0.5cm, align: horizon,
+              rect(width: 100%, fill: white, stroke: 1.5pt + ugr-red, inset: 0.6cm)[*OCT Macular*\ #text(size: 18pt, weight: "regular")[9 Capas + IRL, ORL, TMV]],
+              text(size: 34pt, fill: ugr-red)[$->$],
+              rect(width: 100%, fill: white, stroke: 1.5pt + ugr-dark, inset: 0.6cm)[*Preprocesado*\ #text(size: 18pt, weight: "regular")[29 Variables\ Norm: $Z$ vs $"TMV" + Z$]],
+              text(size: 34pt, fill: ugr-red)[$->$],
+              rect(width: 100%, fill: ugr-red, stroke: none, inset: 0.6cm)[#set text(fill: white); *XGBoost*\ #text(size: 18pt, weight: "regular")[$10 times 5"-fold"$ CV]]
+            )
+          ]
+        ]
+        #v(0.3cm)
+        #text(size: 22pt, style: "italic")[*Fig 1.* Flujo de procesamiento de imágenes OCT.]
+      ],
+      [
+        Se implementó el algoritmo *eXtreme Gradient Boosting (XGBoost)* evaluado mediante validación cruzada estratificada ($10 times 5"-fold"$ CV).
+        
+        *4 Tareas Evaluadas:*
+        - *HvP:* HC vs. Parkinsonismo ($N=98$).
+        - *SvT:* Sinucleinopatías vs. Tauopatía.
+        - *3C:* PD vs. PSP vs. MSA.
+        - *4C:* HC vs. PD vs. PSP vs. MSA.
+      ]
+    )
+  ],
+  [ // Columna Derecha: Caja Oscura de Datos
+    #dark-side-box(
+      "2.1", "Cohorte OCT (N = 134)",
+      [
+        A partir de 488 registros iniciales, se filtraron los casos, conformando una cohorte final de *134 sujetos*:
+
+        #v(0.5cm)
+        #set text(size: 24pt)
+        #table(
+          columns: (1.3fr, 0.7fr, 1.4fr, 1fr),
+          align: (left, center, center, center),
+          stroke: 0.8pt + gray.darken(30%),
+          inset: 0.6cm,
+          fill: (x, y) => if y == 0 { ugr-red } else { ugr-dark.lighten(8%) },
+          [*Grupo*], [*$N$*], [*Edad (Media±DE)*], [*Sexo (H/M)*],
+          [*HC*], [36], [$63.6 \pm 9.9$], [20 / 33],
+          [*PD*], [46], [$59.5 \pm 13.0$], [29 / 19],
+          [*PSP*], [34], [$70.4 \pm 7.5$], [20 / 17],
+          [*MSA*], [18], [$59.0 \pm 7.6$], [20 / 9],
+        )
+      ]
+    )
+  ]
+)
+
+// 3. RESULTADOS
+#section-heading("3", "Resultados Principales")
+
+#grid(
+  columns: (1fr, 1.35fr),
+  gutter: 2.5cm,
+  [ // Gráfica de Barras Izquierda
+    #block(width: 100%, stroke: 1.5pt + gray.lighten(30%), inset: 1.5cm, fill: white)[
+      #text(size: 30pt, weight: "bold", fill: ugr-dark)[Comparativa de Exactitud (*Accuracy*)]
+      #v(0.3cm)
+      #text(size: 24pt, fill: ugr-gray)[El conjunto _raw_ superó consistentemente a PCA en todos los experimentos.]
+      #v(1.2cm)
+      
+      #bar-item("HvP (Binaria)", "HC vs. Parkinsonismo (Z, raw)", "72.4%", 72.4%, "7.9%", ugr-red)
+      #bar-item("SvT (Binaria)", "PD+MSA vs. PSP (TMV+Z, raw)", "70.4%", 70.4%, "5.7%", ugr-red.lighten(12%))
+      #bar-item("3-Clases (3C)", "PD vs. PSP vs. MSA (TMV+Z, raw)", "52.1%", 52.1%, "10.0%", ugr-dark.lighten(15%))
+      #bar-item("4-Clases (4C)", "HC vs. PD vs. PSP vs. MSA (Z, raw)", "39.5%", 39.5%, "12.0%", ugr-gray.lighten(20%))
+    ]
+  ],
+  [ // Tablas Derecha
+    #text(size: 30pt, weight: "bold", fill: ugr-dark)[Tabla Resumen: Mejores Configuraciones]
+    #v(0.4cm)
+    #set text(size: 25pt)
+    #table(
+      columns: (1.6fr, 0.9fr, 1.3fr, 1.2fr, 1.1fr),
+      align: (left, center, center, center, center),
+      stroke: 0.8pt + gray.lighten(20%),
+      inset: 0.7cm,
+      fill: (x, y) => if y == 0 { ugr-dark } else if calc.odd(y) { light-bg } else { white },
+      [#text(fill: white, weight: "bold")[Tarea]], [#text(fill: white, weight: "bold")[Norm.]], [#text(fill: white, weight: "bold")[Accuracy]], [#text(fill: white, weight: "bold")[Balanced Acc.]], [#text(fill: white, weight: "bold")[F1-Macro]],
+      [*HvP* (HC vs. Rest)], [$Z$], [*$0.724 \pm 0.079$*], [$0.609 \pm 0.064$], [$0.619 \pm 0.073$],
+      [*SvT* (PD+MSA vs. PSP)], [$"TMV" + Z$], [*$0.704 \pm 0.057$*], [$0.650 \pm 0.071$], [$0.652 \pm 0.071$],
+      [*3-Clases* (PD/PSP/MSA)], [$"TMV" + Z$], [*$0.521 \pm 0.100$*], [$0.472 \pm 0.105$], [$0.440 \pm 0.111$],
+    )
+  ]
+)
+
+#v(0.8cm)
+
+// 4. CONCLUSIONES
+#red-banner-box(
+  "4", "Discusión y Conclusiones",
+  [
+    \- *Estratificación biológica robusta (*$approx 70\%$*):* El modelo distingue con notable éxito las sinucleinopatías (EP+AMS) de las tauopatías (PSP) ($0.704 \pm 0.057$).
+    \- *Huellas morfométricas divergentes:* Los resultados confirman que las patologías de alfa-sinucleína y proteína tau alteran de forma divergente las capas retinianas.
+  ],
+  [
+    \- *Desafío multiclase y solapamiento:* La menor precisión en los modelos de 3 y 4 clases ($52.1\%$ y $39.5\%$) subraya el importante solapamiento clínico entre EP y AMS.
+    \- *Perspectiva clínica:* La combinación de OCT y *XGBoost* habilita una vía rápida, económica y no invasiva para la estratificación temprana.
+  ]
+)
