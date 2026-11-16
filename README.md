@@ -20,13 +20,13 @@ A [Quarto](https://quarto.org) extension for **A0 portrait conference posters** 
 Start a new poster from the template:
 
 ```bash
-quarto use template <github-user>/<repo>
+quarto use template pakitochus/quarto-poster
 ```
 
 Or add the format to an existing project:
 
 ```bash
-quarto add <github-user>/<repo>
+quarto add pakitochus/quarto-poster
 ```
 
 ## Usage
